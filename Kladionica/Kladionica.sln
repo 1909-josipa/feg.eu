@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30320.27
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kladionica", "Kladionica.csproj", "{990017CF-374D-4845-8063-5CBFA8B26C6F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{990017CF-374D-4845-8063-5CBFA8B26C6F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{990017CF-374D-4845-8063-5CBFA8B26C6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{990017CF-374D-4845-8063-5CBFA8B26C6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{990017CF-374D-4845-8063-5CBFA8B26C6F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D02E6194-43AA-40E6-8E3D-720C110A5A9B}
+	EndGlobalSection
+EndGlobal
