@@ -25,15 +25,15 @@ namespace Kladionica.Controllers
         }
 
         // GET: Users/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(string Sport)
         {
-            if (id == null)
+            if (Sport == null)
             {
                 return NotFound();
             }
 
             var user = await _context.Users
-                .FirstOrDefaultAsync(m => m.UserID == id);
+                .FirstOrDefaultAsync(m => m.Sport == Sport);
             if (user == null)
             {
                 return NotFound();
@@ -46,7 +46,7 @@ namespace Kladionica.Controllers
         public IActionResult AddorEdit(int id=0)
         {
             if (id == 0)
-                return View(new User());
+                return View(new Game());
             else
                 return View(_context.Users.Find(id));
         }
@@ -56,18 +56,15 @@ namespace Kladionica.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> AddorEdit([Bind("UserID,SportType,Participent,ResultType")] User user)
+        public async Task<IActionResult> Create([Bind("SelectedOutcome,Payment,Cost,Stake,TotalCoefficient,WinningTicket,Gain")] Ticket ticket)
         {
             if (ModelState.IsValid)
-            {
-                if(user.UserID == 0)
-                    _context.Add(user);
-                else 
-                    _context.Update(user);
+            { 
+                _context.Add(ticket);                  
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(user);
+            return View(ticket);
         }
 
         // GET: Users/Edit/5
@@ -91,61 +88,48 @@ namespace Kladionica.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("UserID,SportType,Participent,ResultType")] User user)
+        public async Task<IActionResult> Edit(string selectedOutcome, [Bind("SelectedOutcome,Payment,Cost,Stake,TotalCoefficient,WinningTicket,Gain")] Ticket ticket)
         {
-            if (id != user.UserID)
+            if (selectedOutcome != ticket.SelectedOutcome)
             {
                 return NotFound();
             }
 
             if (ModelState.IsValid)
             {
-                try
-                {
-                    _context.Update(user);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!UserExists(user.UserID))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
+                _context.Update(ticket);
+                await _context.SaveChangesAsync();
+                
                 return RedirectToAction(nameof(Index));
             }
-            return View(user);
+            return View(ticket);
         }
 
         // GET: Users/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(string game)
         {
-            if (id == null)
+            if (game == null)
             {
                 return NotFound();
             }
 
-            var user = await _context.Users
-                .FirstOrDefaultAsync(m => m.UserID == id);
-            if (user == null)
+            var ticket = await _context.Users
+                .FirstOrDefaultAsync(m => m.Game == game);
+            if (ticket == null)
             {
                 return NotFound();
             }
 
-            return View(user);
+            return View(ticket);
         }
 
         // POST: Users/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(string game)
         {
-            var user = await _context.Users.FindAsync(id);
-            _context.Users.Remove(user);
+            var ticket = await _context.Users.FindAsync(game);
+            _context.Ticket.Remove(game);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }

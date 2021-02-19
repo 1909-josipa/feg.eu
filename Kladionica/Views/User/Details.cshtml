@@ -10,11 +10,45 @@
     <h4>User</h4>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.FullName)
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Participent)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.FullName)
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Participent)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.OutcomeGame)
+        </dt>
+        <dd>
+            <table class="table">
+                <tr>
+                    <th>Game</th>
+                    <th>Expected Result</th>
+                    <th>Coefficients</th>
+                    <th>Special Offer</th>
+                    <th>Winning Outcome</th>
+                </tr>
+                @foreach (var item in Model.OutcomeGame)
+                {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Game)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ExpectedResult)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Coefficients)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SpecialOffer)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.WinningOutcome)
+                </td>
+            </tr>
+                }
+            </table>
         </dd>
     </dl>
 </div>

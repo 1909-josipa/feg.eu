@@ -8,23 +8,48 @@ using System.Threading.Tasks;
 
 namespace Kladionica.Models
 {
-    public class User
+
+    public class Game
+
     {
-        [Key]
-        public int UserID { get; set; }
-        [Column(TypeName = "varchar(100)")]
-        [Required(ErrorMessage = "This field is required.")]
-        [DisplayName("ID")]
-        public string SportType { get; set; }
-        [Column(TypeName = "varchar(100)")]
-        [DisplayName("Sport Type")]
-        public string Participants { get; set; }
-        [Column(TypeName = "varchar(100)")]
-        [DisplayName("Participants")]
-        public Array ResultType { get; set; }
-        [DisplayName("Result Type")]
+        [StringLength(50, MinimumLength = 3)]
+        public string Sport { get; set; }
+        [StringLength(50, MinimumLength = 5)]
+        public string Participent { get; set; }
+        public virtual OutcomeGame OutcomeGame { get; set; }
+        public int Result { get; set; }
+        [StringLength(5)]
+        public string TimeOfGame { get; set; }
+    }
 
+    public class OutcomeGame
+    {
+        [StringLength(50, MinimumLength = 3)]
+        public string Game { get; set; }
+        public string ExpectedResult { get; set; }
+        public int Coefficients { get; set; }
+        public int SpecialOffer { get; set; }
+        public string WinningOutcome { get; set; }
+        public virtual Game Game { get; set; }
+        public virtual SelectedOutcome SelectedOutcome { get; set; }
 
+    }
 
+    public class SelectedOutcome
+    {
+        public string Ticket { get; set; }
+        public string Outcome { get; set; }
+        public virtual Ticket Ticket { get; set; }
+    }
+
+    public class Ticket
+    {
+        public string SelectedOutcome { get; set; }
+        public int Payment { get; set; }
+        public int Costs { get; set; }
+        public int Stake { get; set; }
+        public int TotalCoefficient { get; set; }
+        public string WinningTicket { get; set; }
+        public int Gain { get; set; }
     }
 }

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Kladionica.Models.User>
+﻿@model IEnumerable<Kladionica.Models.Game>
 
 @{
     ViewData["Title"] = "Index";
@@ -15,7 +15,19 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.UserID)
+                @Html.DisplayNameFor(model => model.Sport)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Participent)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OutcomeGame)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Result)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TimeOfGame)
             </th>
             <th><a asp-action="AddorEdit" class="btn btn-outline-success"><i class="far fa-plus-square"></i>Add new</a></th>
         </tr>
@@ -24,12 +36,24 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.UserID)
+                @Html.DisplayFor(modelItem => item.Sport)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.UserID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.UserID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.UserID">Delete</a>
+                @Html.DisplayFor(modelItem => item.Participent)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OutcomeGame)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Result)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TimeOfGame)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Sport">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Sport">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Sport">Delete</a>
             </td>
         </tr>
 }
