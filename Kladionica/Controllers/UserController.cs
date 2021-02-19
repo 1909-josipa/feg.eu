@@ -21,19 +21,19 @@ namespace Kladionica.Controllers
         // GET: Users
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Users.ToListAsync());
+            return View(await _context.Tickets.ToListAsync());
         }
 
         // GET: Users/Details/5
-        public async Task<IActionResult> Details(string Sport)
+        public async Task<IActionResult> Details(string selectedOutcome)
         {
-            if (Sport == null)
+            if (selectedOutcome == null)
             {
                 return NotFound();
             }
 
-            var user = await _context.Users
-                .FirstOrDefaultAsync(m => m.Sport == Sport);
+            var user = await _context.Tickets
+                .FirstOrDefaultAsync(m => m.SelectedOutcome == selectedOutcome);
             if (user == null)
             {
                 return NotFound();
@@ -48,7 +48,7 @@ namespace Kladionica.Controllers
             if (id == 0)
                 return View(new Game());
             else
-                return View(_context.Users.Find(id));
+                return View(_context.Tickets.Find(id));
         }
 
         // POST: Users/Create
@@ -75,7 +75,7 @@ namespace Kladionica.Controllers
                 return NotFound();
             }
 
-            var user = await _context.Users.FindAsync(id);
+            var user = await _context.Tickets.FindAsync(id);
             if (user == null)
             {
                 return NotFound();
@@ -106,15 +106,15 @@ namespace Kladionica.Controllers
         }
 
         // GET: Users/Delete/5
-        public async Task<IActionResult> Delete(string game)
+        public async Task<IActionResult> Delete(string selectedOutcome)
         {
-            if (game == null)
+            if (selectedOutcome == null)
             {
                 return NotFound();
             }
 
-            var ticket = await _context.Users
-                .FirstOrDefaultAsync(m => m.Game == game);
+            var ticket = await _context.Tickets
+                .FirstOrDefaultAsync(m => m.SelectedOutcome == selectedOutcome);
             if (ticket == null)
             {
                 return NotFound();
@@ -126,17 +126,17 @@ namespace Kladionica.Controllers
         // POST: Users/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(string game)
+        public async Task<IActionResult> DeleteConfirmed(string selectedOutcome)
         {
-            var ticket = await _context.Users.FindAsync(game);
-            _context.Ticket.Remove(game);
+            var ticket = await _context.Tickets.FindAsync(selectedOutcome);
+            _context.Tickets.Remove(ticket);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool UserExists(int id)
+        private bool UserExists(string selectedOutcome)
         {
-            return _context.Users.Any(e => e.UserID == id);
+            return _context.Tickets.Any(e => e.SelectedOutcome == selectedOutcome);
         }
     }
 }

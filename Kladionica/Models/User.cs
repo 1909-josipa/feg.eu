@@ -22,6 +22,8 @@ namespace Kladionica.Models
         public string TimeOfGame { get; set; }
     }
 
+
+
     public class OutcomeGame
     {
         [StringLength(50, MinimumLength = 3)]
@@ -37,7 +39,6 @@ namespace Kladionica.Models
 
     public class SelectedOutcome
     {
-        public string Ticket { get; set; }
         public string Outcome { get; set; }
         public virtual Ticket Ticket { get; set; }
     }

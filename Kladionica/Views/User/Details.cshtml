@@ -1,4 +1,4 @@
-﻿@model Kladionica.Models.User
+﻿@model Kladionica.Models.Ticket
 
 @{
     ViewData["Title"] = "Details";
@@ -8,13 +8,14 @@
 
 <div>
     <h4>User</h4>
+
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Participent)
+            @Html.DisplayNameFor(model => model.SelectedOutcome)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Participent)
+            @Html.DisplayFor(model => model.Payment)
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.OutcomeGame)
@@ -28,24 +29,14 @@
                     <th>Special Offer</th>
                     <th>Winning Outcome</th>
                 </tr>
-                @foreach (var item in Model.OutcomeGame)
+                @foreach (var item in Model.SelectedOutcome)
                 {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Game)
+                    @Html.DisplayFor(modelItem => item.Ticket)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.ExpectedResult)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Coefficients)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.SpecialOffer)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.WinningOutcome)
-                </td>
+                    @Html.DisplayFor(modelItem => item.Outcome)
             </tr>
                 }
             </table>
@@ -53,6 +44,6 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.UserID">Edit</a> |
+    <a asp-action="Edit" asp-route-id="@Model.SelectedOutcome">Edit</a> |
     <a asp-action="Index">Back to List</a>
 </div>
