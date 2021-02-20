@@ -27,7 +27,7 @@ namespace Kladionica.Models
     public class OutcomeGame
     {
         [StringLength(50, MinimumLength = 3)]
-        public string Game { get; set; }
+        public string Match { get; set; }
         public string ExpectedResult { get; set; }
         public int Coefficients { get; set; }
         public int SpecialOffer { get; set; }
@@ -45,6 +45,7 @@ namespace Kladionica.Models
 
     public class Ticket
     {
+        [Key]
         public string SelectedOutcome { get; set; }
         public int Payment { get; set; }
         public int Costs { get; set; }

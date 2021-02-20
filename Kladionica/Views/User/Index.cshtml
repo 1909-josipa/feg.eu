@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Kladionica.Models.Game>
+﻿@model IEnumerable<Kladionica.Models.Ticket>
 
 @{
     ViewData["Title"] = "Index";
@@ -15,45 +15,57 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Sport)
+                @Html.DisplayNameFor(model => model.SelectedOutcome)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Participent)
+                @Html.DisplayNameFor(model => model.Payment)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.OutcomeGame)
+                @Html.DisplayNameFor(model => model.Costs)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Result)
+                @Html.DisplayNameFor(model => model.Stake)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.TimeOfGame)
+                @Html.DisplayNameFor(model => model.TotalCoefficient)
             </th>
-            <th><a asp-action="AddorEdit" class="btn btn-outline-success"><i class="far fa-plus-square"></i>Add new</a></th>
+            <th>
+                @Html.DisplayNameFor(model => model.WinningTicket)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Gain)
+            </th>
+            
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Sport)
+                @Html.DisplayFor(modelItem => item.SelectedOutcome)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Participent)
+                @Html.DisplayFor(modelItem => item.Payment)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.OutcomeGame)
+                @Html.DisplayFor(modelItem => item.Costs)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Result)
+                @Html.DisplayFor(modelItem => item.Stake)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.TimeOfGame)
+                @Html.DisplayFor(modelItem => item.TotalCoefficient)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Sport">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Sport">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Sport">Delete</a>
+                @Html.DisplayFor(modelItem => item.WinningTicket)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Gain)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.SelectedOutcome">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.SelectedOutcome">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.SelectedOutcome">Delete</a>
             </td>
         </tr>
 }

@@ -18,20 +18,20 @@ namespace Kladionica.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.2");
 
-            modelBuilder.Entity("Kladionica.Models.User", b =>
+            modelBuilder.Entity("Kladionica.Models.Ticket", b =>
                 {
-                    b.Property<int>("UserID")
+                    b.Property<string>("SelectedOutcome")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
+                        .HasColumnType("string")
                         .UseIdentityColumn();
 
-                    b.Property<string>("FullName")
+                    b.Property<int>("Payment")
                         .IsRequired()
                         .HasColumnType("varchar(100)");
 
-                    b.HasKey("UserID");
+                    b.HasKey("SelectedOutcome");
 
-                    b.ToTable("Users");
+                    b.ToTable("SelectedOutcome");
                 });
 #pragma warning restore 612, 618
         }
